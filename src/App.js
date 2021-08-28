@@ -1,9 +1,10 @@
 import logo from './logo.svg';
+import RegisterForm from './components/registration/RegisterForm';
 
 
 function App() {
   return (
-    <p>slack-app</p>
+    <RegisterForm/>
   );
 }
 
