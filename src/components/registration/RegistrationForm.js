@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -28,6 +28,10 @@ function RegistrationForm() {
         // console.log("users data", users);
       })
       .catch((error) => console.log("this is an error", error));
+
+    if (data.password !== data.password2) {
+      console.log(`Password do not match`);
+    }
   };
 
   return (

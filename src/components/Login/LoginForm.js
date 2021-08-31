@@ -22,7 +22,8 @@ function LoginForm() {
         // setUsers([...userArray]);
         // console.log("users data", users);
       })
-      .catch((error) => console.log("this is an error", error));
+      .catch((error) => console.log("Hello", error));
+      
   };
 
   return (
