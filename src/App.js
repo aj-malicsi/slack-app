@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from "./components/Login/LoginForm";
@@ -20,6 +21,21 @@ function App() {
         </Route>
       </Switch>
     </Router>
+=======
+import logo from './logo.svg';
+import RegisterForm from './components/registration/RegisterForm';
+import LoginForm from './components/Login/LoginForm';
+
+
+function App() {
+  return (
+    <>
+
+    <RegisterForm/>
+
+    <LoginForm/>
+    </>
+>>>>>>> 7f091941c4c0b627e7a1570b38bc3e6ad3a052f9
   );
 }
 
