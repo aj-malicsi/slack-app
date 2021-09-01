@@ -1,9 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 function LoginForm(props) {
+
+  let history = useHistory();
+
   const {
     register,
     handleSubmit,
@@ -23,6 +26,15 @@ function LoginForm(props) {
         // console.log("users data", users);
 
         console.log(response.data.data.uid)
+        props.setLoggedIn(response.data.data.uid)
+        
+        console.log(props.loggedIn)
+
+        if(props.loggedIn !== ""){
+          history.push('/main-page')
+
+        }
+          
       })
       .catch((error) => console.log("Hello", error));
       
