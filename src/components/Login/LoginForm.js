@@ -21,6 +21,8 @@ function LoginForm() {
         console.log(response);
         // setUsers([...userArray]);
         // console.log("users data", users);
+
+        console.log(response.data.data.uid)
       })
       .catch((error) => console.log("Hello", error));
       

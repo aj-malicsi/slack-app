@@ -1,9 +1,13 @@
 import React from "react";
+import {useState} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from "./components/Login/LoginForm";
-import RegistrationForm from "./components/registration/RegistrationForm";
+import RegistrationForm from "./components/Registration/RegistrationForm";
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState("")
+
+  
   return (
     //router
     <Router>
