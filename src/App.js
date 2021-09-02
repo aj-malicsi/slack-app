@@ -2,7 +2,7 @@ import React from "react";
 import {useState, useEffect} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from "./components/Login/LoginForm";
-import RegistrationForm from "./components/Registration/RegistrationForm";
+import RegistrationForm from "./components/registration/RegistrationForm";
 import MainPage from "./components/Channels/MainPage";
 
 function App() {
@@ -40,6 +40,7 @@ function App() {
         </Route>
 
         <Route 
+        
         exact path="/main-page" 
         component={MainPage}
         loggedIn={loggedIn}
