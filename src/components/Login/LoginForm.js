@@ -13,6 +13,10 @@ function LoginForm(props) {
     formState: { errors },
   } = useForm();
 
+  function gotoMain(){
+    
+  }
+
   const onSubmit = (data) => {
     axios
       .post("http://206.189.91.54/api/v1/auth/sign_in", {
@@ -26,17 +30,28 @@ function LoginForm(props) {
         // console.log("users data", users);
 
         console.log(response.data.data.uid)
-        props.setLoggedIn(response.data.data.uid)
-        
-        console.log(props.loggedIn)
 
-        if(props.loggedIn !== ""){
+        if(typeof response.data.data.uid === 'string'){
+          console.log("its a string", response.data.data.uid)
+          props.setLoggedIn(response.data.data.uid)
           history.push('/main-page')
-
         }
+        
+      
+        
+
+        // if(props.loggedIn !== ""){
+          
+        //   history.push('/main-page')
+        // }
+        
           
       })
       .catch((error) => console.log("Hello", error));
+
+      setTimeout(console.log("outer check",props.loggedIn), 3000)
+
+
       
   };
 
