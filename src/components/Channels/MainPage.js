@@ -8,6 +8,10 @@ function MainPage(props){
 
     console.log("main page headers check", props.headers)
 
+    const headers = props.headers
+
+    
+
     const {
         register,
         handleSubmit,
@@ -20,21 +24,28 @@ function MainPage(props){
 
         console.log(data)
         console.log(channelUsers)
+
+        console.log("headers onsubmit check =>",headers['access-token'])
+
         axios
             .post("http://206.189.91.54/api/v1/channels", {
-            name: data.newChannel,
+            body:{
+              name: data.newChannel,
             user_ids: channelUsers,
+
+            },
+            
             headers:{
-              'access-token': "",
-              'expiry': "",
-              'uid': '',
-              'client': '',
+              'access-token': headers['access-token'],
+              'expiry': headers.expiry,
+              'uid': headers.uid,
+              'client': headers.client,
 
             }
             
             })
             .then((response) => {
-            console.log(response);
+            console.log("channel =>",response);
             })
             .catch((error) => console.log("this is an error", error));
     
@@ -49,8 +60,9 @@ function MainPage(props){
      
 
     console.log("main page check", props.loggedIn)
-    if(user !== undefined && user !== ""){
-        console.log(user)
+    if(props.loggedIn !== undefined &&  props.loggedIn !== ""){
+        
+
         return(
 
         <div className="min-h-screen flex items-center justify-center bg-gray-600">
@@ -71,7 +83,7 @@ function MainPage(props){
           
         </div>
 
-        <div className="flex flex-col mr-48 w-full">
+        {/* <div className="flex flex-col mr-48 w-full">
         <input
             type="addUsers"     
             id="addUsers"
@@ -81,7 +93,7 @@ function MainPage(props){
             className="border-2 border-gray-400 p-1 pl-3 rounded outline-none focus:border-blue-300"
           />         
         </div>
-        <button className=" w-24 bg-green-500 hover:bg-green-400 p-1  rounded text-white font-bold mt-3">+ Add User</button>
+        <button className=" w-24 bg-green-500 hover:bg-green-400 p-1  rounded text-white font-bold mt-3">+ Add User</button> */}
 
         <div>
           <button className="block w-full bg-green-500 hover:bg-green-400 p-4 rounded text-white font-bold mt-20">
@@ -95,7 +107,7 @@ function MainPage(props){
         )
     }
 
-    if(user === "" || user === undefined){
+    if(props.loggedIn === "" || user ===  props.loggedIn){
         console.log("else", user)
         return(
             <Redirect from="/main-page" to="/" />

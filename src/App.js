@@ -9,36 +9,9 @@ function App() {
   const [loggedIn, setLoggedIn] = useState("")
   const [headers, setHeaders] = useState({})
 
-  // localStorage.clear();
 
-  
-
-
- 
-
-  useEffect(()=>{
-    localStorage.setItem('loggedIn', loggedIn)
-    setLoggedIn(localStorage.getItem('loggedIn'))
-
-    console.log("use effect loggedIn check", loggedIn)
-
-    // localStorage.setItem('headers', JSON.stringify(headers))
-    // setLoggedIn(localStorage.getItem('headers'))
-
-    // console.log("use effect headers check", headers)
-
-    
-
-  },[loggedIn])
-
-  // useEffect(()=>{
-    
-
-  // },[headers])
-
-
-  console.log("app check", loggedIn)
-  console.log("headers app check",headers)
+  // console.log("app check", loggedIn)
+  // console.log("headers app check",headers)
 
   
   return (
@@ -63,14 +36,17 @@ function App() {
           </div>
         </Route>
 
-        <Route 
-        
-        exact path="/main-page" 
-        component={MainPage}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-        headers={headers}
-        setHeaders={setHeaders}
+        <Route
+          exact
+          path="/main-page"
+          component={() => {
+            return (
+              <MainPage
+                loggedIn={loggedIn}
+                headers={headers}
+              />
+            )
+          }}
         />
 
         
