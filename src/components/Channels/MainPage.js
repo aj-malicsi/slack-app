@@ -1,26 +1,64 @@
 import {Redirect} from "react-router-dom";
 import {useForm} from "react-hook-form"
+import axios from "axios";
 
 function MainPage(props){
 
     const user = localStorage.getItem('loggedIn');
 
+    console.log("main page headers check", props.headers)
+
     const {
         register,
+        handleSubmit,
         
         formState: { errors },
       } = useForm();
 
-    console.log("main page check",user)
+      
+    const onSubmit = (data) => {
+
+        console.log(data)
+        console.log(channelUsers)
+        axios
+            .post("http://206.189.91.54/api/v1/channels", {
+            name: data.newChannel,
+            user_ids: channelUsers,
+            headers:{
+              'access-token': "",
+              'expiry': "",
+              'uid': '',
+              'client': '',
+
+            }
+            
+            })
+            .then((response) => {
+            console.log(response);
+            })
+            .catch((error) => console.log("this is an error", error));
+    
+        };
+
+    let channelUsers = ['254','238'];
+
+    // const addUser = () =>{
+    //     console.log(addUsers)
+
+    // }
+     
+
+    console.log("main page check", props.loggedIn)
     if(user !== undefined && user !== ""){
         console.log(user)
         return(
+
         <div className="min-h-screen flex items-center justify-center bg-gray-600">
             <div className="bg-white p-10 rounded shadow-2xl w-1/3">
       <h2 className="text-3xl font-bold mb-10 text-gray-500 ml-28">
         Create Channel 
       </h2>
-      <form className="space-y-5">
+      <form onSubmit={handleSubmit(onSubmit)}className="space-y-5">
         <div className="flex flex-col mr-48 w-full">
           
         <input

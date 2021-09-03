@@ -20,8 +20,10 @@ function LoginForm(props) {
   const onSubmit = (data) => {
     axios
       .post("http://206.189.91.54/api/v1/auth/sign_in", {
-        email: data.email,
-        password: data.password,
+          email: data.email,
+          password: data.password,
+
+        
       })
       .then((response) => {
         // userArray.push(response.data);
@@ -30,15 +32,16 @@ function LoginForm(props) {
         // console.log("users data", users);
 
         console.log(response.data.data.uid)
+        console.log("stringify log",JSON.stringify(response.headers))
 
         if(typeof response.data.data.uid === 'string'){
           console.log("its a string", response.data.data.uid)
           props.setLoggedIn(response.data.data.uid)
+          
+          props.setHeaders(response.headers)
+
           history.push('/main-page')
         }
-        
-      
-        
 
         // if(props.loggedIn !== ""){
           

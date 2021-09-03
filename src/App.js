@@ -2,22 +2,43 @@ import React from "react";
 import {useState, useEffect} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from "./components/Login/LoginForm";
-import RegistrationForm from "./components/registration/RegistrationForm";
+import RegistrationForm from "./components/Registration/RegistrationForm";
 import MainPage from "./components/Channels/MainPage";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState("")
+  const [headers, setHeaders] = useState({})
+
+  // localStorage.clear();
+
+  
+
+
+ 
 
   useEffect(()=>{
     localStorage.setItem('loggedIn', loggedIn)
-
     setLoggedIn(localStorage.getItem('loggedIn'))
-    console.log("use effect check", loggedIn)
+
+    console.log("use effect loggedIn check", loggedIn)
+
+    // localStorage.setItem('headers', JSON.stringify(headers))
+    // setLoggedIn(localStorage.getItem('headers'))
+
+    // console.log("use effect headers check", headers)
+
+    
 
   },[loggedIn])
 
+  // useEffect(()=>{
+    
+
+  // },[headers])
+
 
   console.log("app check", loggedIn)
+  console.log("headers app check",headers)
 
   
   return (
@@ -29,7 +50,10 @@ function App() {
           <div className="min-h-screen flex items-center justify-center bg-gray-600">
             <LoginForm 
             loggedIn={loggedIn} 
-            setLoggedIn={setLoggedIn}/>
+            setLoggedIn={setLoggedIn}
+            headers={headers}
+            setHeaders={setHeaders}
+            />
           </div>
         </Route>
 
@@ -45,6 +69,8 @@ function App() {
         component={MainPage}
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
+        headers={headers}
+        setHeaders={setHeaders}
         />
 
         
