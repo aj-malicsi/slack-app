@@ -23,7 +23,7 @@ function RegistrationForm(props) {
       })
       .then((response) => {
         // userArray.push(response.data);
-        console.log(response.data);
+        // console.log(response.data);
         // setUsers([...userArray]);
         // console.log("users data", users);
       })
@@ -42,7 +42,7 @@ function RegistrationForm(props) {
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <div className="flex flex-col mr-48 w-full ">
-          <label for="firstName" className="font-bold mb-2 text-gray-500">
+          <label htmlFor="firstName" className="font-bold mb-2 text-gray-500">
             First Name
           </label>
           <input
@@ -56,7 +56,7 @@ function RegistrationForm(props) {
           </div>
         </div>
         <div className="flex flex-col mr-48 w-full ">
-          <label for="lastName" className="font-bold mb-2 text-gray-500">
+          <label htmlFor="lastName" className="font-bold mb-2 text-gray-500">
             Last Name
           </label>
           <input
@@ -71,7 +71,7 @@ function RegistrationForm(props) {
         </div>
 
         <div className="flex flex-col mr-48 w-full">
-          <label for="Email" className="font-bold mb-2 text-gray-500">
+          <label htmlFor="Email" className="font-bold mb-2 text-gray-500">
             Email
           </label>
           <input
@@ -86,7 +86,7 @@ function RegistrationForm(props) {
         </div>
 
         <div className="flex flex-col mr-48 w-full">
-          <label for="password" className="font-bold mb-2 text-gray-500">
+          <label htmlFor="password" className="font-bold mb-2 text-gray-500">
             Password
           </label>
           <input
@@ -101,7 +101,7 @@ function RegistrationForm(props) {
         </div>
 
         <div className="flex flex-col mr-48 w-full">
-          <label for="password2" className="font-bold mb-2 text-gray-500">
+          <label htmlFor="password2" className="font-bold mb-2 text-gray-500">
             Confirm Password
           </label>
           <input

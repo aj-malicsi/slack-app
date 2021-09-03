@@ -6,10 +6,14 @@ function MainPage(props){
 
     const user = localStorage.getItem('loggedIn');
 
-    console.log("main page headers check", props.headers)
+    
 
-    const headers = props.headers
-
+    const headersList = {
+      'access-token': props.headers['access-token'],
+      'expiry': props.headers.expiry,
+      'client': props.headers.client,
+      'uid': props.headers.uid,
+    }
     
 
     const {
@@ -22,44 +26,28 @@ function MainPage(props){
       
     const onSubmit = (data) => {
 
-        console.log(data)
-        console.log(channelUsers)
+        
+        let channelData = {
+          "name": data.newChannel,
+          "user_ids": [props.headers.expiry]
+      }
 
-        console.log("headers onsubmit check =>",headers['access-token'])
+      console.log(data.channelData)
 
         axios
-            .post("http://206.189.91.54/api/v1/channels", {
-            body:{
-              name: data.newChannel,
-            user_ids: channelUsers,
-
-            },
-            
-            headers:{
-              'access-token': headers['access-token'],
-              'expiry': headers.expiry,
-              'uid': headers.uid,
-              'client': headers.client,
-
-            }
-            
-            })
+            .post("http://206.189.91.54/api/v1/channels", channelData, {"headers" : headersList})
+       
             .then((response) => {
-            console.log("channel =>",response);
+            console.log(headersList);
+            console.log(response.data)
+            console.log(response)
             })
-            .catch((error) => console.log("this is an error", error));
+            .catch((error) => console.log(error.message));
     
         };
 
-    let channelUsers = ['254','238'];
-
-    // const addUser = () =>{
-    //     console.log(addUsers)
-
-    // }
-     
-
-    console.log("main page check", props.loggedIn)
+   
+    
     if(props.loggedIn !== undefined &&  props.loggedIn !== ""){
         
 

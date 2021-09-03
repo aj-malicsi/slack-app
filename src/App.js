@@ -1,5 +1,5 @@
 import React from "react";
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from "./components/Login/LoginForm";
 import RegistrationForm from "./components/Registration/RegistrationForm";
@@ -9,11 +9,9 @@ function App() {
   const [loggedIn, setLoggedIn] = useState("")
   const [headers, setHeaders] = useState({})
 
+  // console.log("App() =>", loggedIn)
+  // console.log("App JS", headers)
 
-  // console.log("app check", loggedIn)
-  // console.log("headers app check",headers)
-
-  
   return (
     //router
     <Router>
@@ -21,8 +19,8 @@ function App() {
 
         <Route exact path="/">
           <div className="min-h-screen flex items-center justify-center bg-gray-600">
-            <LoginForm 
-            loggedIn={loggedIn} 
+            <LoginForm
+            loggedIn={loggedIn}
             setLoggedIn={setLoggedIn}
             headers={headers}
             setHeaders={setHeaders}
@@ -44,13 +42,11 @@ function App() {
               <MainPage
                 loggedIn={loggedIn}
                 headers={headers}
+                setHeaders={setHeaders}
               />
             )
           }}
         />
-
-        
-
       </Switch>
     </Router>
   );
