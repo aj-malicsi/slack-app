@@ -41,7 +41,7 @@ function MainPage(props) {
         console.log("post", response.data);
         history.push("/channel");
         // console.log(response);
-        
+    
 
         })
         .catch((error) => console.log(error.message));
