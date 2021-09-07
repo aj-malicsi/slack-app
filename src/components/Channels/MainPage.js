@@ -20,13 +20,16 @@ function MainPage(props) {
     formState: { errors },
   } = useForm();
 
+  let users = [254]
+
   const onSubmit = (data) => {
     let channelData = {
       name: data.newChannel,
-      user_ids: [props.headers.expiry],
+      user_ids: users,
     };
 
-    console.log(data.channelData);
+    console.log("channel data obj",channelData);
+ 
 
     axios
       .post("http://206.189.91.54/api/v1/channels", channelData, {
@@ -36,24 +39,27 @@ function MainPage(props) {
       .then((response) => {
         // console.log(headersList);
         console.log("post", response.data);
-        history.push("/Channel");
+        history.push("/channel");
         // console.log(response);
-      })
-      .catch((error) => console.log(error.message));
+        
+
+        })
+        .catch((error) => console.log(error.message));
 
     axios
       .get("http://206.189.91.54/api/v1/channels", {
         headers: headersList,
       })
       .then((response) => {
-        // console.log(headersList);
-        // console.log(response.data);
-        // console.log("get request", response);
         console.log("get response", response.data.data);
         let channelArr = response.data.data;
         props.setChannels(channelArr);
       })
       .catch((error) => console.log(error.message));
+
+        
+
+    
   };
 
   if (props.loggedIn !== undefined && props.loggedIn !== "") {
