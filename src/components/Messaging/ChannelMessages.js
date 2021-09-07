@@ -30,18 +30,14 @@ function ChannelMessages(props){
 
     //form submit
     const onSubmit = (data) => {
-        // console.log(data)
-        // console.log(headersList)
-
+        
         let messageData ={
             receiver_id: props.id,
             receiver_class: "Channel",
             body: data.message,
 
         }
-
-        // console.log(messageData)
-        
+  
         axios.post("http://206.189.91.54/api/v1/messages", messageData, {
                 headers: headersList,
             })
@@ -57,7 +53,6 @@ function ChannelMessages(props){
                         console.log("GET RESPONSE")
                         console.log(response.data.data)
                         setMessages(response.data.data)
-                        // console.log("messageArr",messageArr)
                         
 
                     })
@@ -69,22 +64,7 @@ function ChannelMessages(props){
         
 
     }
-        
-        // using component
-        // axios
-        //     .get(`http://206.189.91.54/api/v1/messages?receiver_id=${props.id}&receiver_class=Channel`,{
-        //         headers: headersList,
-        //     })
-        //     .then((response) =>{
-        //         console.log("GET RESPONSE")
-        //         console.log(response.data.data)
-        //         messageArr = response.data.data
-        //         setMessages(messageArr)
-        //         // console.log("messageArr",messageArr)
-                
-
-        //     })
-        //     .catch( (error) => console.log(error.message) );
+    
 
         useEffect( () =>{
             axios
@@ -94,9 +74,9 @@ function ChannelMessages(props){
             .then((response) =>{
                 console.log("GET RESPONSE")
                 console.log(response.data.data)
-                messageArr = response.data.data
-                setMessages(messageArr)
-                // console.log("messageArr",messageArr)
+                setMessages(response.data.data)
+                        
+                
                 
 
             })
@@ -106,25 +86,6 @@ function ChannelMessages(props){
 
         
 
-        //using array
-        
-        
-        // axios
-        //     .get(`http://206.189.91.54/api/v1/messages?receiver_id=${props.id}&receiver_class=Channel`,{
-        //         headers: headersList,
-        //     })
-        //     .then((response) =>{
-        //         console.log("GET RESPONSE")
-        //         console.log(response.data.data)
-        //         messageArr = response.data.data
-        //         // console.log(response.data.data)
-        //         // setMessages(response.data.data)
-        //         // console.log("messageArr",messageArr)
-
-                
-
-        //     })
-        //     .catch( (error) => console.log(error.message) );
       
 
     
@@ -134,21 +95,7 @@ function ChannelMessages(props){
             <ChannelDisplay
             messages={messages}
             />
-            {/* <ul>
-          {
-            messageArr.map((message) => {
-              return (
-                <> 
-                <div key={message.id}>
-                  {message.body} sent by {message.sender.uid}
-                </div>
-                </>
-              )
-            })
-          }
-        </ul> */}
-    
-    
+            
             <form onSubmit={handleSubmit(onSubmit)}>
     
             <input
