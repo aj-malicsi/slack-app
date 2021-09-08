@@ -8,7 +8,7 @@ function ChannelDisplay(props){
     return(
         <>
         <div>display messages here</div>
-        <ul>
+        <ul className="border-solid border-2 border-black">
           {
             messageArr.map((message) => {
               return (

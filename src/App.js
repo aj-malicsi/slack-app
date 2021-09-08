@@ -5,11 +5,13 @@ import LoginForm from "./components/Login/LoginForm";
 import RegistrationForm from "./components/Registration/RegistrationForm";
 import MainPage from "./components/Channels/MainPage";
 import Channel from "./components/Channels/Channel";
+import SelectedChannel from "./components/Channels/SelectedChannel";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState("");
   const [headers, setHeaders] = useState({});
   const [channels, setChannels] = useState([]);
+  const [selectedChannel, setSelectedChannel] = useState("");
 
   // console.log("App() =>", loggedIn)
   // console.log("App JS", headers)
@@ -62,9 +64,27 @@ function App() {
                 headers={headers}
                 setHeaders={setHeaders}
                 channels={channels}
+                selectedChannel={selectedChannel}
+                setSelectedChannel={setSelectedChannel}
               />
             );
           }}
+        />
+
+        <Route
+        exact
+        path="/channel/:channelId/:channelName"
+        render={(props) => <SelectedChannel 
+          {...props}
+          loggedIn={loggedIn}
+          headers={headers}
+          setHeaders={setHeaders}
+          channels={channels}
+          selectedChannel={selectedChannel}
+          setSelectedChannel={setSelectedChannel}
+        />}
+
+
         />
       </Switch>
     </Router>

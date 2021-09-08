@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import axios from 'axios'
 import ChannelMessages from "../Messaging/ChannelMessages";
 
@@ -9,8 +9,7 @@ function Channel(props) {
 
   // console.log(props.channels.length);
   let index = props.channels.length - 1;
-
-  // console.log(index,props.channels)
+  console.log(props)
   
 
 
@@ -30,7 +29,7 @@ function Channel(props) {
           return (
             <> 
             <div key={channel.id}>
-              {channel.name}
+              <Link to={`/channel/${channel.id}/${channel.name}`}>{channel.name}</Link>
             </div>
             </>
           )

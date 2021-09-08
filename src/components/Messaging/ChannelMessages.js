@@ -7,6 +7,7 @@ function ChannelMessages(props){
     //react hook form variables
 
     const [messages, setMessages] = useState([])
+    console.log("messages",props.id)
     
 
     const {
@@ -82,7 +83,7 @@ function ChannelMessages(props){
             })
             .catch( (error) => console.log(error.message) );
 
-        },[])
+        },[props.id])
 
         
 
