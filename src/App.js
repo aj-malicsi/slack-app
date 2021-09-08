@@ -12,6 +12,7 @@ function App() {
   const [headers, setHeaders] = useState({});
   const [channels, setChannels] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState("");
+  const [users, setUsers] = useState([]);
 
   // console.log("App() =>", loggedIn)
   // console.log("App JS", headers)
@@ -28,6 +29,8 @@ function App() {
               setLoggedIn={setLoggedIn}
               headers={headers}
               setHeaders={setHeaders}
+              users={users}
+              setUsers={setUsers}
             />
           </div>
         </Route>
@@ -49,6 +52,8 @@ function App() {
                 setHeaders={setHeaders}
                 channels={channels}
                 setChannels={setChannels}
+                users={users}
+                setUsers={setUsers}
               />
             );
           }}

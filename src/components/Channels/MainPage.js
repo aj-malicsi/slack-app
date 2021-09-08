@@ -1,14 +1,16 @@
 import { Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useEffect } from 'react';
 
 function MainPage(props) {
   const user = localStorage.getItem("loggedIn");
 
   let history = useHistory();
 
-  // console.log(props.loggedIn.id)
+  console.log("main page users =>",props.users)
 
+ 
   const headersList = {
     "access-token": props.headers["access-token"],
     expiry: props.headers.expiry,
@@ -25,10 +27,19 @@ function MainPage(props) {
   let users = [props.loggedIn.id];
 
   const onSubmit = (data) => {
+
+    console.log(data.addUsers)
+    let splitUsers = data.addUsers.split(",")
+    
+
+    splitUsers.push(users.pop())
+    console.log(splitUsers)
+    
     let channelData = {
       name: data.newChannel,
-      user_ids: users,
+      user_ids: splitUsers,
     };
+   
 
     console.log("channel data obj", channelData);
 
@@ -56,17 +67,25 @@ function MainPage(props) {
       })
       .catch((error) => console.log(error.message));
 
-    // axios
-    //   .get("http://206.189.91.54/api/v1/channels", {
-    //     headers: headersList,
-    //   })
-    //   .then((response) => {
-    //     console.log("get response", response.data.data);
-    //     let channelArr = response.data.data;
-    //     props.setChannels(channelArr);
-    //   })
-    //   .catch((error) => console.log(error.message));
   };
+
+  useEffect( () =>{
+    console.log("use effect main page check")
+    axios
+          .get("http://206.189.91.54/api/v1/users", {
+            headers: headersList,
+          })
+          .then((response) => {
+            console.log("get response", response);
+            // let channelArr = response.data.data;
+            // props.setChannels(channelArr);
+          })
+          .catch((error) => console.log(error.message));
+
+  },[])
+
+
+
 
   if (props.loggedIn !== undefined && props.loggedIn !== "") {
     return (
@@ -96,7 +115,7 @@ function MainPage(props) {
               />
             </div>
 
-            {/* <div className="flex flex-col mr-48 w-full">
+            <div className="flex flex-col mr-48 w-full">
             <input
               type="addUsers"
               id="addUsers"
@@ -106,7 +125,7 @@ function MainPage(props) {
               className="border-2 border-gray-400 p-1 pl-3 rounded outline-none focus:border-blue-300"
             />
           </div>
-          <button className=" w-24 bg-green-500 hover:bg-green-400 p-1  rounded text-white font-bold mt-3">
+          {/* <button className=" w-24 bg-green-500 hover:bg-green-400 p-1  rounded text-white font-bold mt-3">
             + Add User
           </button> */}
             <div>
