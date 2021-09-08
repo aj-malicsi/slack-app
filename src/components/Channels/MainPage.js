@@ -20,7 +20,7 @@ function MainPage(props) {
     formState: { errors },
   } = useForm();
 
-  let users = [254]
+  let users = [254];
 
   const onSubmit = (data) => {
     let channelData = {
@@ -28,8 +28,7 @@ function MainPage(props) {
       user_ids: users,
     };
 
-    console.log("channel data obj",channelData);
- 
+    console.log("channel data obj", channelData);
 
     axios
       .post("http://206.189.91.54/api/v1/channels", channelData, {
@@ -41,25 +40,30 @@ function MainPage(props) {
         console.log("post", response.data);
         history.push("/channel");
         // console.log(response);
-    
 
-        })
-        .catch((error) => console.log(error.message));
-
-    axios
-      .get("http://206.189.91.54/api/v1/channels", {
-        headers: headersList,
-      })
-      .then((response) => {
-        console.log("get response", response.data.data);
-        let channelArr = response.data.data;
-        props.setChannels(channelArr);
+        axios
+          .get("http://206.189.91.54/api/v1/channels", {
+            headers: headersList,
+          })
+          .then((response) => {
+            console.log("get response", response.data.data);
+            let channelArr = response.data.data;
+            props.setChannels(channelArr);
+          })
+          .catch((error) => console.log(error.message));
       })
       .catch((error) => console.log(error.message));
 
-        
-
-    
+    // axios
+    //   .get("http://206.189.91.54/api/v1/channels", {
+    //     headers: headersList,
+    //   })
+    //   .then((response) => {
+    //     console.log("get response", response.data.data);
+    //     let channelArr = response.data.data;
+    //     props.setChannels(channelArr);
+    //   })
+    //   .catch((error) => console.log(error.message));
   };
 
   if (props.loggedIn !== undefined && props.loggedIn !== "") {
