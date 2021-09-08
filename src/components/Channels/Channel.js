@@ -43,6 +43,13 @@ function Channel(props) {
     channels={props.channels}
     />
 
+    <Link
+      to="/main-page"
+      className="text-blue-800 hover:text-blue-500"
+    >
+      Create a channel
+    </Link>
+
     </>
 
     );
