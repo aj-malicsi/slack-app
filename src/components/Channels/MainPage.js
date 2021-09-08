@@ -7,6 +7,8 @@ function MainPage(props) {
 
   let history = useHistory();
 
+  // console.log(props.loggedIn.id)
+
   const headersList = {
     "access-token": props.headers["access-token"],
     expiry: props.headers.expiry,
@@ -20,7 +22,7 @@ function MainPage(props) {
     formState: { errors },
   } = useForm();
 
-  let users = [254];
+  let users = [props.loggedIn.id];
 
   const onSubmit = (data) => {
     let channelData = {
