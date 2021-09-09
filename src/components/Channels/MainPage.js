@@ -8,7 +8,7 @@ function MainPage(props) {
 
   let history = useHistory();
 
-  console.log("main page users =>",props.users)
+  
 
  
   const headersList = {
@@ -69,21 +69,31 @@ function MainPage(props) {
 
   };
 
+    
+    // console.log(props.users.length)
+    
+
     useEffect( () =>{
-      console.log("use effect main page check")
-      axios
-          .get("http://206.189.91.54/api/v1/users", {
-            headers: headersList,
-          })
-          .then((response) => {
-            console.log("GET RESPONSE USERS", response.data.data);
-            props.setUsers(response.data.data)
-            // console.log(props.users)
-          
-          })
-          .catch((error) => console.log(error.message));
+      if(props.users.length === 0){
+        console.log("use effect main page check")
+        axios
+            .get("http://206.189.91.54/api/v1/users", {
+              headers: headersList,
+            })
+            .then((response) => {
+              // console.log(props.users.length)
+              console.log("GET RESPONSE USERS", response.data.data);
+              props.setUsers(response.data.data)
+  
+              
+            
+            })
+            .catch((error) => console.log(error.message));
+
+    }
 
     },[])
+    
 
 
 

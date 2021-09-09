@@ -17,7 +17,8 @@ function App() {
 
   // console.log("App() =>", loggedIn)
   // console.log("App JS", headers)
-  console.log("appChannel", channels);
+  // console.log("appChannel", channels);
+  console.log("app users =>", users)
 
   return (
     //router
