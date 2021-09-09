@@ -6,6 +6,7 @@ import RegistrationForm from "./components/Registration/RegistrationForm";
 import MainPage from "./components/Channels/MainPage";
 import Channel from "./components/Channels/Channel";
 import SelectedChannel from "./components/Channels/SelectedChannel";
+import UserSearch from "./components/Users/UserSearch";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState("");
@@ -77,6 +78,25 @@ function App() {
         />
 
         <Route
+          exact
+          path="/user-search"
+          component={() => {
+            return (
+              <UserSearch
+                loggedIn={loggedIn}
+                headers={headers}
+                setHeaders={setHeaders}
+                channels={channels}
+                selectedChannel={selectedChannel}
+                setSelectedChannel={setSelectedChannel}
+                users={users}
+                setUsers={setUsers}
+              />
+            );
+          }}
+        />
+
+        <Route
         exact
         path="/channel/:channelId/:channelName"
         render={(props) => <SelectedChannel 
@@ -88,9 +108,9 @@ function App() {
           selectedChannel={selectedChannel}
           setSelectedChannel={setSelectedChannel}
         />}
-
-
         />
+
+
       </Switch>
     </Router>
   );

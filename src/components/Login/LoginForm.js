@@ -23,7 +23,6 @@ function LoginForm(props) {
       })
       .then((response) => {
        
-
         if(typeof response.data.data.uid === 'string'){
           // console.log("its a string", response.data.data.uid)
           // props.setLoggedIn(response.data.data.uid)
@@ -34,6 +33,7 @@ function LoginForm(props) {
 
           history.push('/main-page')
         }
+        
 
           
       })
