@@ -7,6 +7,7 @@ import MainPage from "./components/Channels/MainPage";
 import Channel from "./components/Channels/Channel";
 import SelectedChannel from "./components/Channels/SelectedChannel";
 import UserSearch from "./components/Users/UserSearch";
+import UserMessages from "./components/Messaging/UserMessages";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState("");
@@ -110,6 +111,18 @@ function App() {
           setSelectedChannel={setSelectedChannel}
         />}
         />
+
+        <Route
+        exact
+        path="/user-messages/:userId/:userName"
+        render={(props) => <UserMessages
+          {...props}
+          loggedIn={loggedIn}
+          headers={headers}
+          
+        />}
+        />
+        
 
 
       </Switch>

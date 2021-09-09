@@ -1,10 +1,17 @@
 
+import { Redirect, useHistory, Link } from "react-router-dom";
 
 function UserDisplay(props){
 
+    let user = props.user
+
 
     return(
-        <div>{props.user.id},{props.user.uid}</div>
+        <>
+        <div>
+              <Link to={`/user-messages/${user.id}/${user.uid}`}>{user.uid}</Link>
+        </div>
+        </>
     )
 }
 
