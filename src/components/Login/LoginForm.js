@@ -26,7 +26,8 @@ function LoginForm(props) {
 
         if(typeof response.data.data.uid === 'string'){
           // console.log("its a string", response.data.data.uid)
-          props.setLoggedIn(response.data.data.uid)
+          // props.setLoggedIn(response.data.data.uid)
+          props.setLoggedIn(response.data.data)
           
           props.setHeaders(response.headers)
           // console.log("test", props.headers)
