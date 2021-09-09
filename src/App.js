@@ -6,6 +6,8 @@ import RegistrationForm from "./components/Registration/RegistrationForm";
 import MainPage from "./components/Channels/MainPage";
 import Channel from "./components/Channels/Channel";
 import SelectedChannel from "./components/Channels/SelectedChannel";
+import UserSearch from "./components/Users/UserSearch";
+import UserMessages from "./components/Messaging/UserMessages";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState("");
@@ -16,7 +18,8 @@ function App() {
 
   // console.log("App() =>", loggedIn)
   // console.log("App JS", headers)
-  console.log("appChannel", channels);
+  // console.log("appChannel", channels);
+  console.log("app users =>", users)
 
   return (
     //router
@@ -77,6 +80,25 @@ function App() {
         />
 
         <Route
+          exact
+          path="/user-search"
+          component={() => {
+            return (
+              <UserSearch
+                loggedIn={loggedIn}
+                headers={headers}
+                setHeaders={setHeaders}
+                channels={channels}
+                selectedChannel={selectedChannel}
+                setSelectedChannel={setSelectedChannel}
+                users={users}
+                setUsers={setUsers}
+              />
+            );
+          }}
+        />
+
+        <Route
         exact
         path="/channel/:channelId/:channelName"
         render={(props) => <SelectedChannel 
@@ -88,9 +110,21 @@ function App() {
           selectedChannel={selectedChannel}
           setSelectedChannel={setSelectedChannel}
         />}
-
-
         />
+
+        <Route
+        exact
+        path="/user-messages/:userId/:userName"
+        render={(props) => <UserMessages
+          {...props}
+          loggedIn={loggedIn}
+          headers={headers}
+          
+        />}
+        />
+        
+
+
       </Switch>
     </Router>
   );

@@ -1,4 +1,4 @@
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useEffect } from 'react';
@@ -8,7 +8,7 @@ function MainPage(props) {
 
   let history = useHistory();
 
-  console.log("main page users =>",props.users)
+  
 
  
   const headersList = {
@@ -69,20 +69,31 @@ function MainPage(props) {
 
   };
 
-  useEffect( () =>{
-    console.log("use effect main page check")
-    axios
-          .get("http://206.189.91.54/api/v1/users", {
-            headers: headersList,
-          })
-          .then((response) => {
-            console.log("get response", response);
-            // let channelArr = response.data.data;
-            // props.setChannels(channelArr);
-          })
-          .catch((error) => console.log(error.message));
+    
+    // console.log(props.users.length)
+    
 
-  },[])
+    useEffect( () =>{
+      if(props.users.length === 0){
+        console.log("use effect main page check")
+        axios
+            .get("http://206.189.91.54/api/v1/users", {
+              headers: headersList,
+            })
+            .then((response) => {
+              // console.log(props.users.length)
+              console.log("GET RESPONSE USERS", response.data.data);
+              props.setUsers(response.data.data)
+  
+              
+            
+            })
+            .catch((error) => console.log(error.message));
+
+    }
+
+    },[])
+    
 
 
 
@@ -132,7 +143,17 @@ function MainPage(props) {
               <button className="block w-full bg-green-500 hover:bg-green-400 p-4 rounded text-white font-bold mt-20">
                 Submit
               </button>
+
             </div>
+            <button className="block w-full bg-yellow-500 hover:bg-yellow-400 p-4 rounded text-white font-bold mt-20">
+              <Link
+                to="/user-search"
+                className="text-white-800 hover:text-blue-500"
+              >
+                Search User
+              </Link>
+              </button>
+
           </form>
         </div>
       </div>

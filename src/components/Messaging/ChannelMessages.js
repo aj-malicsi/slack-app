@@ -75,10 +75,7 @@ function ChannelMessages(props){
             .then((response) =>{
                 console.log("GET RESPONSE")
                 console.log(response.data.data)
-                setMessages(response.data.data)
-                        
-                
-                
+                setMessages(response.data.data)   
 
             })
             .catch( (error) => console.log(error.message) );
