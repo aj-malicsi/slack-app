@@ -68,7 +68,7 @@ function SelectedChannel(props) {
   if (props.channels.length !== 0) {
     return (
       <>
-        <div>Channel Name: {channelName} ID: {channelId} </div>
+        <div className="bg-pink-800 ml-40 text-white font-bold" >Channel Name: {channelName} ID: {channelId} </div>
 
     <ChannelList 
       channels={props.channels}
