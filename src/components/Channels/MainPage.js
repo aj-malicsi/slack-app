@@ -9,6 +9,8 @@ function MainPage(props) {
 
   let history = useHistory();
 
+  let tempChannel = {}
+
   
 
  
@@ -42,7 +44,7 @@ function MainPage(props) {
     };
    
 
-    console.log("channel data obj", channelData);
+    // console.log("channel data obj", channelData);
 
     axios
       .post("http://206.189.91.54/api/v1/channels", channelData, {
@@ -51,8 +53,15 @@ function MainPage(props) {
 
       .then((response) => {
         // console.log(headersList);
-        console.log("post", response.data);
-        history.push("/channel");
+        // console.log("post", response.data);
+
+        console.log(response.data.errors)
+        if(response.data.errors === undefined){
+          history.push("/channel");
+        }
+        else if(response.data.errors.length > 0){
+          history.push("/main-page")
+        }        
         // console.log(response);
 
         axios
@@ -63,10 +72,18 @@ function MainPage(props) {
             console.log("get response", response.data.data);
             let channelArr = response.data.data;
             props.setChannels(channelArr);
+
+            if(channelArr[channelArr.length - 1].id)
+            console.log(channelArr[channelArr.length - 1].id)
           })
           .catch((error) => console.log(error.message));
+
+
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        console.log(error.message)
+        history.push("/main-page")
+      });
 
   };
 
