@@ -8,20 +8,23 @@ function ChannelList(props){
 
     return(
         <>
-        <div>Channel List</div>
-     <ul>
+    <div className="bg-pink-800 w-40 text-white " >Channels
+     <ul className="text-center">
        {
         props.channels.map((channel) => {
           return (
             <> 
-            <div key={channel.id}>
+            <p key={channel.id} 
+               className ="hover:text-green-400">
+
               <Link to={`/channel/${channel.id}/${channel.name}`}>{channel.name}</Link>
-            </div>
+            </p>
             </>
           )
         })
       }
     </ul>
+    </div>
     </>
     )
 }
