@@ -2,7 +2,7 @@ import UserMessagesDisplay from "./UserMessagesDisplay"
 import { useForm } from "react-hook-form";
 import axios from 'axios'
 import {useState, useEffect} from 'react'
-
+import { Link } from 'react-router-dom';
 
 
 function UserMessages(props){
@@ -99,10 +99,14 @@ function UserMessages(props){
         <br></br>
         <button type="submit" className = "border-solid border-2 border-red-500">send</button>
 
-    
+    </form> 
 
-
-    </form>
+    <Link
+        to="/user-search"
+        className="text-blue-800 hover:text-blue-500"
+        >
+        Find a User
+        </Link>
 
         
         </>
