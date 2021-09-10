@@ -2,11 +2,14 @@ import { Redirect, useHistory, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useEffect } from 'react';
+import ChannelList from "./ChannelList";
 
 function MainPage(props) {
   const user = localStorage.getItem("loggedIn");
 
   let history = useHistory();
+
+  let tempChannel = {}
 
   
 
@@ -41,7 +44,7 @@ function MainPage(props) {
     };
    
 
-    console.log("channel data obj", channelData);
+    // console.log("channel data obj", channelData);
 
     axios
       .post("http://206.189.91.54/api/v1/channels", channelData, {
@@ -50,8 +53,15 @@ function MainPage(props) {
 
       .then((response) => {
         // console.log(headersList);
-        console.log("post", response.data);
-        history.push("/channel");
+        // console.log("post", response.data);
+
+        console.log(response.data.errors)
+        if(response.data.errors === undefined){
+          history.push("/channel");
+        }
+        else if(response.data.errors.length > 0){
+          history.push("/main-page")
+        }        
         // console.log(response);
 
         axios
@@ -62,10 +72,18 @@ function MainPage(props) {
             console.log("get response", response.data.data);
             let channelArr = response.data.data;
             props.setChannels(channelArr);
+
+            if(channelArr[channelArr.length - 1].id)
+            console.log(channelArr[channelArr.length - 1].id)
           })
           .catch((error) => console.log(error.message));
+
+
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        console.log(error.message)
+        history.push("/main-page")
+      });
 
   };
 
@@ -85,10 +103,21 @@ function MainPage(props) {
               console.log("GET RESPONSE USERS", response.data.data);
               props.setUsers(response.data.data)
   
-              
             
             })
             .catch((error) => console.log(error.message));
+      if(props.channels.length === 0){
+        axios
+          .get("http://206.189.91.54/api/v1/channels", {
+            headers: headersList,
+          })
+          .then((response) => {
+            console.log("GET CHANNEL RESPONSE USE EFFECT", response.data.data);
+            let channelArr = response.data.data;
+            props.setChannels(channelArr);
+          })
+          .catch((error) => console.log(error.message));
+      }
 
     }
 
@@ -109,9 +138,21 @@ function MainPage(props) {
       //   </div>
       //   <div className="p-8 flex-1">Chatbox goes here</div>
       // </div>
-
+      <>
+     
+     
       <div className="min-h-screen flex items-center justify-center bg-gray-600">
+      <div className="min-h-screen flex">
+        <div className="bg-purple-800 w-64 flex flex-col p-3">
+          <ChannelList 
+          channels={props.channels}/>
+        </div>
+      </div>
+
+      
+      
         <div className="bg-white p-10 rounded shadow-2xl w-1/3">
+        
           <h2 className="text-3xl font-bold mb-10 text-gray-500 ml-28">
             Create Channel
           </h2>
@@ -157,6 +198,8 @@ function MainPage(props) {
           </form>
         </div>
       </div>
+
+    </>
     );
   }
 

@@ -3,6 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import axios from 'axios'
 import ChannelMessages from "../Messaging/ChannelMessages";
 import { useForm } from "react-hook-form";
+import ChannelList from "./ChannelList";
 
 
 
@@ -69,20 +70,10 @@ function SelectedChannel(props) {
       <>
         <div>Channel Name: {channelName} ID: {channelId} </div>
 
-        <div>Channel List</div>
-      <ul>
-      {
-        props.channels.map((channel) => {
-          return (
-            <> 
-            <div key={channel.id}>
-              <Link to={`/channel/${channel.id}/${channel.name}`}>{channel.name}</Link>
-            </div>
-            </>
-          )
-        })
-      }
-    </ul>
+    <ChannelList 
+      channels={props.channels}
+    />
+
     <ChannelMessages
     id={channelId}
     headers={props.headers}
@@ -101,6 +92,13 @@ function SelectedChannel(props) {
 
       <button type="submit">Add User</button>
     </form>
+
+    <Link
+      to="/main-page"
+      className="text-blue-800 hover:text-blue-500"
+      >
+      Create a channel
+    </Link>
 
     </>
 

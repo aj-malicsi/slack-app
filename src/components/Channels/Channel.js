@@ -10,7 +10,7 @@ function Channel(props) {
 
   // console.log(props.channels.length);
   let index = props.channels.length - 1;
-  console.log(props)
+  // console.log(props)
 
   const {
     register,
@@ -73,11 +73,11 @@ function Channel(props) {
     // console.log(props.channels[index].id)
     
 
-    console.log("CHANNEL LOG")
-    console.log(props.channels[index])
+    // console.log("CHANNEL LOG")
+    // console.log(props.channels[index])
     return (
       <>
-        <div>Channel created {props.channels[index].name}</div>
+        <div>Channel Name:{props.channels[index].name} ID:{props.channels[index].id}</div>
 
         <div>Channel List</div>
       <ul>

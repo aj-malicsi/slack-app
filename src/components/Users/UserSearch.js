@@ -71,6 +71,13 @@ function UserSearch(props){
             user = {user}
             />
 
+            <Link
+            to="/main-page"
+            className="text-blue-800 hover:text-blue-500"
+            >
+            Create a channel
+            </Link>
+
     
             </form>
             </>
