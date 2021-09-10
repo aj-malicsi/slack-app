@@ -7,7 +7,7 @@ function UserMessagesDisplay(props){
 
     return(
         <>
-        <div>user messages display</div>
+        <div>user messages display
         <ul className="border-solid border-2 border-black">
           {
             messageArr.map((message) => {
@@ -21,6 +21,7 @@ function UserMessagesDisplay(props){
             })
           }
         </ul>
+        </div>
         </>
     )
 }

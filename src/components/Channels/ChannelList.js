@@ -8,7 +8,14 @@ function ChannelList(props){
 
     return(
         <>
-    <div className="bg-pink-800 w-40 text-white " >Channels
+    <div className="
+    bg-pink-800
+    w-40 h-full
+    text-white
+    absolute
+    
+    " >
+    Channels
      <ul className="text-center">
        {
         props.channels.map((channel) => {

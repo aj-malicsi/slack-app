@@ -106,7 +106,10 @@ function Channel(props) {
     >
       Create a channel
     </Link>
-
+    <div className="
+    border-solid
+    border-2
+    border-green-500">
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
         type="newUser"
@@ -118,6 +121,7 @@ function Channel(props) {
 
       <button type="submit">Add User</button>
     </form>
+    </div>
   
     </>
 

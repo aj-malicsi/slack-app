@@ -89,7 +89,10 @@ function ChannelMessages(props){
     
         return(
             <>
-            <div>channel messages</div>
+            <div className="
+            
+            
+            ">
             <ChannelDisplay
             messages={messages}
             />
@@ -101,15 +104,31 @@ function ChannelMessages(props){
                 id="message"
                 placeholder="say something!"
                 {...register("message")}
-                className = "border-solid border-2 border-black"
+                className="
+                border-solid 
+                border-2 
+                border-black
+                w-5/12
+                ml-40
+                p-1
+                "
             />
-            <br></br>
-            <button type="submit" className = "border-solid border-2 border-red-500">send</button>
-    
+            {/* <br></br> */}
+            <button type="submit" 
+            className="
+            border-solid 
+            border-2
+            border-green-500 
             
-    
-    
+            bg-green-500
+            w-32
+            
+            p-1
+            
+            ">
+            send</button>    
             </form>
+            </div>
             </>
         )
     

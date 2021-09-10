@@ -3,24 +3,35 @@ import axios from 'axios'
 function ChannelDisplay(props){
     // console.log(props)
     const messageArr = props.messages
-    console.log(messageArr)
+    // console.log(messageArr)
     
     return(
         <>
-        <div>display messages here</div>
-        <ul className="text-center w-1/2 border-solid border-2 border-black">
+        <div className="overflow-auto 
+        text-left
+        h-screen
+        w-screen
+        ml-40
+        overflow-auto   
+        ">
+        <ul className="">
           {
             messageArr.map((message) => {
               return (
                 <> 
-                <div key={message.id}>
-                  {message.body} sent by {message.sender.uid}
-                </div>
+                <p key={message.id} className="font-bold p-1">
+                  {message.sender.uid}
+                </p>
+                <p key={message.id}>
+                  {message.body}
+                </p>
+                
                 </>
               )
             })
           }
         </ul>
+        </div>
         </>
     )
 }

@@ -68,7 +68,7 @@ function SelectedChannel(props) {
   if (props.channels.length !== 0) {
     return (
       <>
-        <div className="bg-pink-800 ml-40 text-white font-bold" >Channel Name: {channelName} ID: {channelId} </div>
+        <div className="bg-pink-800 ml-40 text-white font-bold w-screen p-1" >Channel Name: {channelName} ID: {channelId} </div>
 
     <ChannelList 
       channels={props.channels}
@@ -81,7 +81,13 @@ function SelectedChannel(props) {
     channels={props.channels}
     />
 
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}
+    className="
+    border-solid
+    border-2
+    border-green-500
+    ml-auto
+    w-1/4">
       <input
         type="newUser"
         id="newUser"
@@ -95,7 +101,15 @@ function SelectedChannel(props) {
 
     <Link
       to="/main-page"
-      className="text-blue-800 hover:text-blue-500"
+      className="
+      text-blue-800 
+      font-bold
+      hover:text-blue-500
+      bg-green-500
+      p-1
+      ml-40
+      "
+
       >
       Create a channel
     </Link>
