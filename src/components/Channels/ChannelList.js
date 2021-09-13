@@ -5,8 +5,9 @@ function ChannelList(props){
 
     let channels = props.channels
     
-
-    return(
+    if(channels !== undefined)
+    {
+      return(
         <>
     <div className="
     bg-pink-800
@@ -33,6 +34,13 @@ function ChannelList(props){
     </ul>
     </div>
     </>
+    )
+
+    }
+    
+
+    return(
+      <div>wenk wonk</div>
     )
 }
 

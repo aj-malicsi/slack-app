@@ -9,7 +9,8 @@ function UserDisplay(props){
     return(
         <>
         <div>
-              <Link to={`/user-messages/${user.id}/${user.uid}`}>{user.uid}</Link>
+              <Link className="text-pink-800 font-bold hover:text-pink-600"
+              to={`/user-messages/${user.id}/${user.uid}`}>{user.uid}</Link>
         </div>
         </>
     )

@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function RegistrationForm(props) {
   const {
@@ -10,28 +10,36 @@ function RegistrationForm(props) {
     formState: { errors },
   } = useForm();
 
+  let history = useHistory()
+
   // const [users, setUsers] = useState([]);
 
   // let userArray = users;
 
   const onSubmit = (data) => {
+
+    console.log("registration data", data)
+
+    let registrationData = {
+      email: data.email,
+      password: data.password,
+      password_confirmation: data.password2,
+    };
+
+    console.log(registrationData)
     axios
-      .post("http://206.189.91.54/api/v1/auth", {
-        email: data.email,
-        password: data.password,
-        password2: data.password2,
-      })
+      .post("http://206.189.91.54/api/v1/auth", registrationData
+      )
       .then((response) => {
-        // userArray.push(response.data);
-        // console.log(response.data);
-        // setUsers([...userArray]);
-        // console.log("users data", users);
+        console.log("REGISTRATION",response)
+        history.push("/")
       })
       .catch((error) => console.log("this is an error", error));
 
     if (data.password !== data.password2) {
       console.log(`Password do not match`);
     }
+
   };
 
   return (
