@@ -47,7 +47,7 @@ function MainPage(props) {
     // console.log("channel data obj", channelData);
 
     axios
-      .post("http://206.189.91.54/api/v1/channels", channelData, {
+      .post("https://slackapi.avionschool.com/api/v1/channels", channelData, {
         headers: headersList,
       })
 
@@ -65,7 +65,7 @@ function MainPage(props) {
         // console.log(response);
 
         axios
-          .get("http://206.189.91.54/api/v1/channels", {
+          .get("https://slackapi.avionschool.com/api/v1/channels", {
             headers: headersList,
           })
           .then((response) => {
@@ -95,7 +95,7 @@ function MainPage(props) {
       if(props.users.length === 0){
         console.log("use effect main page check")
         axios
-            .get("http://206.189.91.54/api/v1/users", {
+            .get("https://slackapi.avionschool.com/api/v1/users", {
               headers: headersList,
             })
             .then((response) => {
@@ -108,7 +108,7 @@ function MainPage(props) {
             .catch((error) => console.log(error.message));
       if(props.channels.length === 0){
         axios
-          .get("http://206.189.91.54/api/v1/channels", {
+          .get("https://slackapi.avionschool.com/api/v1/channels", {
             headers: headersList,
           })
           .then((response) => {

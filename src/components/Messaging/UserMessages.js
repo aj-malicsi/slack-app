@@ -38,7 +38,7 @@ function UserMessages(props){
         
         console.log(messageData)
 
-        axios.post("http://206.189.91.54/api/v1/messages", messageData, {
+        axios.post("https://slackapi.avionschool.com/api/v1/messages", messageData, {
                 headers: headersList,
             })
 
@@ -46,7 +46,7 @@ function UserMessages(props){
                 console.log("POST RESPONSE")
                 console.log(response)
                 axios
-                    .get(`http://206.189.91.54/api/v1/messages?receiver_id=${userId}&receiver_class=User`,{
+                    .get(`https://slackapi.avionschool.com/api/v1/messages?receiver_id=${userId}&receiver_class=User`,{
                         headers: headersList,
                     })
                     .then((response) =>{
@@ -65,7 +65,7 @@ function UserMessages(props){
 
     useEffect( () =>{
         axios
-            .get(`http://206.189.91.54/api/v1/messages?receiver_id=${userId}&receiver_class=User`,{
+            .get(`https://slackapi.avionschool.com/api/v1/messages?receiver_id=${userId}&receiver_class=User`,{
                 headers: headersList,
             })
             .then((response) =>{

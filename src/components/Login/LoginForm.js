@@ -16,7 +16,7 @@ function LoginForm(props) {
  
   const onSubmit = (data) => {
     axios
-      .post("http://206.189.91.54/api/v1/auth/sign_in", {
+      .post("https://slackapi.avionschool.com/api/v1/auth/sign_in", {
           email: data.email,
           password: data.password,
 

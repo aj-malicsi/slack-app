@@ -47,7 +47,7 @@ function SelectedChannel(props) {
     // console.log(channelData)
 
     axios
-      .post("http://206.189.91.54/api/v1/channel/add_member", channelData, {
+      .post("https://slackapi.avionschool.com/api/v1/channel/add_member", channelData, {
         headers: headersList,
       })
 

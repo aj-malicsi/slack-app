@@ -41,7 +41,7 @@ function Channel(props) {
     // console.log(channelData)
 
     axios
-      .post("http://206.189.91.54/api/v1/channel/add_member", channelData, {
+      .post("https://slackapi.avionschool.com/api/v1/channel/add_member", channelData, {
         headers: headersList,
       })
 
@@ -51,7 +51,7 @@ function Channel(props) {
         console.log(headersList)
 
         // axios
-        //     .get(`http://206.189.91.54/api/v1/channel/${props.channels[index].id}`, channelData, {
+        //     .get(`https://slackapi.avionschool.com/api/v1/channel/${props.channels[index].id}`, channelData, {
         //       headers: headersList,
         //     })
 
